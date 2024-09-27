@@ -9,7 +9,7 @@ CREATE TABLE Categoria(
 )
 
 CREATE TABLE Cliente (
-	id_cliente int identity(1,1) primary key,
+	id_cliente int identity (1,1) primary key,
 	nombre varchar (50) NOT NULL,
 	Apellido nchar (50) NOT NULL,
 	direccion varchar (250) NOT NULL,
@@ -19,18 +19,18 @@ CREATE TABLE Cliente (
 )
 CREATE TABLE Detalle (
 	id_detalle int identity (1,1) primary key,
-	id_producto int NOT NULL,
+	id_producto int,
 	cantidad int NOT NULL,
 	precio decimal (10,2) NOT NULL
 )
 CREATE TABLE Factura (
-	id_factura int identity primary key,
+	id_factura int identity (1,1) primary key,
 	id_cliente int NOT NULL foreign key references Cliente(id_cliente),
 	fecha date NULL,
 	id_detalle int NOT NULL foreign key references Detalle(id_detalle)
 );
 CREATE TABLE Producto (
-	id_producto int identity primary key,
+	id_producto int identity (1,1) primary key,
 	nombre varchar (2) NOT NULL,
 	precio decimal (10,2) NOT NULL,
     id_categoria int NOT NULL foreign key references Categoria(id_categoria),
@@ -41,7 +41,7 @@ CREATE TABLE Empleados (
 	nombre_empleados varchar (50) NOT NULL,
 	Numero_telefono varchar (250) NOT NULL,
 	edad varchar (10)  NOT NULL,
-	sucursal varchar (30) NOT NULL,
+	sucursal varchar (50) NOT NULL,
 	correo_electronico varchar (60) NOT NULL,
 	contraseña varchar (60) NOT NULL,
 	)
@@ -53,7 +53,6 @@ CREATE TABLE Sucursal (
 	direccion varchar (50) NOT NULL,
 	numero_telefono varchar (250) NOT NULL,
 	ciudad varchar (50) NOT NULL,
-	id_empleados int NOT NULL foreign key references Empleados(id_empleados),
 	estado varchar (60) NOT NULL,
 	)
 
